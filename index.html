@@ -1,0 +1,137 @@
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Beranda - Nareva RP Media Sosial</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+    body {
+      background-color: #f2f5f9;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #007bff;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      margin-top: 10px;
+    }
+    nav a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    main {
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+    .card {
+      background-color: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+    }
+    .card h2 {
+      margin-bottom: 20px;
+    }
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      resize: none;
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .post {
+      background-color: #f8f9fa;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 15px;
+    }
+    .post a {
+      font-weight: bold;
+      color: #007bff;
+      text-decoration: none;
+    }
+    .post img {
+      margin-top: 10px;
+      max-width: 100%;
+      border-radius: 5px;
+    }
+    small {
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Selamat Datang di NRV Media Sosial <span id="userDisplay"></span></h1>
+    <nav>
+      <a href="#">Beranda</a>
+      <a href="#">Profil</a>
+      <a href="#">Pesan</a>
+      <a href="#">Logout</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="card">
+      <h2>Buat Postingan</h2>
+      <form id="postForm">
+        <textarea id="postContent" placeholder="Tulis sesuatu..."></textarea>
+        <button type="submit">Posting</button>
+      </form>
+    </div>
+
+    <div class="post">
+      <a href="#">Harvey_Van_Leeuwen</a><br>
+      <small>2025-05-25 09:38:12</small>
+      <p>Jangan lupaa mampir tiktok sayaa @busnesia</p>
+      <img src="tiktok.jpg" alt="tiktok">
+    </div>
+  </main>
+
+  <script>
+    const username = localStorage.getItem("username");
+    if (username) {
+      document.getElementById("userDisplay").textContent = '(${username})';
+    } else {
+      window.location.href = "register.html"; 
+    }
+
+    document.getElementById("postForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const content = document.getElementById("postContent").value.trim();
+      if (!content) {
+        alert("Isi postingan tidak boleh kosong.");
+        return;
+      }
+
+      alert("Postingan Anda:\n" + content);
+      document.getElementById("postContent").value = "";
+    });
+  </script>
+</body>
+</html>
